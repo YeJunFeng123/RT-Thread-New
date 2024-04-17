@@ -22,7 +22,9 @@
 #include "elog.h"
 /* defined the LED0 pin: PI8 */
 #define LED0_PIN    GET_PIN(C, 11)
-#define LED1_PIN    GET_PIN(C, 10)
+//#define LED1_PIN    GET_PIN(C, 10)
+DMA_HandleTypeDef hdma_spi4_rx;
+
 static void init_elog()
 {
 	elog_init();
@@ -39,7 +41,7 @@ int main(void)
 {
     /* set LED0 pin mode to output */
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
-	rt_pin_mode(LED1_PIN, PIN_MODE_OUTPUT);
+	//rt_pin_mode(LED1_PIN, PIN_MODE_OUTPUT);
     rt_uint16_t tick=0;
     init_elog();
     set_date(2024,1,1);
@@ -47,10 +49,10 @@ int main(void)
     while (1)
     {
         rt_pin_write(LED0_PIN, PIN_HIGH);
-		rt_pin_write(LED1_PIN, PIN_HIGH);
+		//rt_pin_write(LED1_PIN, PIN_HIGH);
         rt_thread_mdelay(500);
         rt_pin_write(LED0_PIN, PIN_LOW);
-		rt_pin_write(LED1_PIN, PIN_LOW);
+		//rt_pin_write(LED1_PIN, PIN_LOW);
         rt_thread_mdelay(500);
         //elog_v("test","tick :%d",tick++);
     }

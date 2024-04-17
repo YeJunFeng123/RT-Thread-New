@@ -59,8 +59,8 @@ static void _rn8306_thread_entry(void* param)
     while (1)
     {
         rt_spi_send_then_recv(_spi3,sendBuf,2,recvBuf,4);
-        //rt_kprintf("Device_ID=%x(hex)\r\n",*(int*)recvBuf);
-        rt_memset(recvBuf,0,10);
+//        //rt_kprintf("Device_ID=%x(hex)\r\n",*(int*)recvBuf);
+//        rt_memset(recvBuf,0,10);
         rt_thread_mdelay(1000);
     }
 }
